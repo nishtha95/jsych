@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.psych.game.model.Game;
 import com.psych.game.model.GameMode;
 import com.psych.game.model.Player;
 import com.psych.game.model.Question;
+import com.psych.game.repositories.GameRepository;
 import com.psych.game.repositories.PlayerRepository;
 import com.psych.game.repositories.QuestionRepository;
 
@@ -23,6 +25,9 @@ public class HelloWorld {
 	@Autowired
 	PlayerRepository playerRepository;
 	
+	@Autowired
+	GameRepository gameRepository;
+	
 	@GetMapping("/")
 	public String hello(){
 		return "Hello, World!";
@@ -30,6 +35,10 @@ public class HelloWorld {
 	@GetMapping("/getAllQuestions")
 	public List<Question> getAllQuestions(){
 		return questionRepository.findAll();
+	}
+	@GetMapping("/getAllGames")
+	public List<Game> getAllGames(){
+		return gameRepository.findAll();
 	}
 	@GetMapping("/question/{id}")
 	public Question getQuestionById(@PathVariable(name="id")Long id){
@@ -43,12 +52,12 @@ public class HelloWorld {
 	public String populateDB(){
 //		Player riya=new Player().builder().withAlias("steel").withEmail("riya@gmail.com").withSaltedHashedPassword("psych123").build();
 //		playerRepository.save(riya);
-//		
-		Question question=new Question("How many moons does Jupiter have?", "79", GameMode.IS_THIS_A_FACT);
-		questionRepository.save(question);
+		
+//		Question question=new Question("How many moons does Jupiter have?", "79", GameMode.IS_THIS_A_FACT);
+//		questionRepository.save(question);
 		questionRepository.save(new Question(
-                "How far can Luffy stretch?",
-                "56 Gomu Gomus",
+                "Who invented the first wheel?",
+                "Mesopotamia",
                 GameMode.IS_THIS_A_FACT
         ));
 		return "populated";

@@ -20,24 +20,24 @@ import lombok.Setter;
 public class Question extends Auditable{
 
 	@NotNull
-//	@Getter
-//	@Setter
+	@Getter
+	@Setter
 	private String question;
 	
 	@NotNull
-//	@Getter
-//	@Setter
+	@Getter
+	@Setter
 	private String correctAnswer;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="question")
-//	@Getter
-//	@Setter
+	@Getter
+	@Setter
 	private Set<EllenAnswer> ellenAnswers=new HashSet<>();
 	
 	@Enumerated(EnumType.STRING)
 	@NotNull
-//	@Getter
-//	@Setter
+	@Getter
+	@Setter
 	private GameMode gameMode;
 
 	public Question() {
@@ -45,41 +45,9 @@ public class Question extends Auditable{
 	}
 
 	public Question(@NotNull String question, @NotNull String correctAnswer, @NotNull GameMode gameMode) {
-		//super();
+		super();
 		this.question = question;
 		this.correctAnswer = correctAnswer;
-		this.gameMode = gameMode;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-	public String getCorrectAnswer() {
-		return correctAnswer;
-	}
-
-	public void setCorrectAnswer(String correctAnswer) {
-		this.correctAnswer = correctAnswer;
-	}
-
-	public Set<EllenAnswer> getEllenAnswers() {
-		return ellenAnswers;
-	}
-
-	public void setEllenAnswers(Set<EllenAnswer> ellenAnswers) {
-		this.ellenAnswers = ellenAnswers;
-	}
-
-	public GameMode getGameMode() {
-		return gameMode;
-	}
-
-	public void setGameMode(GameMode gameMode) {
 		this.gameMode = gameMode;
 	}
 }
