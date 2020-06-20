@@ -1,2 +1,2 @@
-# lets-psych
+# jsych
 Psych game cloned using spring
